@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#ecece1">
+  <title>Footpath Receipt — notes from your block</title><link rel="stylesheet" href="/styles.css"><script src="/app.js" defer></script>
+</head>
+<body>
+  <header class="topbar"><a class="wordmark" href="/" aria-label="Footpath Receipt home"><span class="mark">FR</span><span>fieldnotes / 01</span></a><span class="top-note">A clearer record of what you noticed.</span></header>
+  <main>
+    <section class="intro"><div class="eyebrow"><span class="sun-dot"></span> Small details make a place</div><h1>Take a closer look<br><em>at your block.</em></h1><p>Write down what you notice on a familiar walk. Gemma can organize your notes into an editable field report—without pretending it checked anything you didn’t.</p></section>
+    <div class="workspace">
+      <section class="note-panel" aria-labelledby="notes-heading">
+        <div class="section-head"><div><span class="kicker">01 / YOUR NOTES</span><h2 id="notes-heading">What did you notice?</h2></div><span class="not-audit">First-hand notes</span></div>
+        <label class="place-label" for="place">Block or area <span>optional · typed by you</span></label><input id="place" maxlength="100" placeholder="e.g. the block near my bus stop">
+        <div id="notes" class="notes-list"></div>
+        <button id="add-note" class="add-note" type="button"><span>＋</span> Add an observation</button>
+        <div class="panel-actions"><button id="organize" class="primary" type="button"><span>Organize my notes</span><span aria-hidden="true">↗</span></button><p>Only the notes above and your optional area label are sent for this request.</p></div>
+      </section>
+      <section class="report-panel" aria-labelledby="report-heading" aria-live="polite">
+        <div class="section-head"><div><span class="kicker">02 / YOUR FIELD RECEIPT</span><h2 id="report-heading">A draft, not a verdict.</h2></div><span class="report-number">DRAFT 001</span></div>
+        <div id="report-empty" class="report-empty"><div class="receipt-icon" aria-hidden="true"><span></span><span></span><span></span><span></span></div><p>Your organized notes will appear here.</p><small>Each observation should point back to one of your notes.</small></div>
+        <article id="report" class="report hidden">
+          <div class="draft-stamp">AUTHOR REVIEW REQUIRED · NOT VERIFIED</div><h3 id="report-title"></h3><p id="report-summary" class="summary"></p>
+          <h4>Observations</h4><div id="report-items" class="report-items"></div>
+          <h4>Unknown / needs checking</h4><ul id="report-unknowns" class="unknowns"></ul>
+          <label class="edit-label" for="editable-report">Edit before you use it</label><textarea id="editable-report" rows="10" spellcheck="true"></textarea>
+          <div class="report-actions"><button id="copy-report" class="secondary" type="button">Copy draft</button><button id="download-report" class="secondary" type="button">Download .txt</button></div>
+          <p id="report-provenance" class="provenance"></p>
+        </article>
+        <p id="status" class="status" role="status"></p>
+      </section>
+    </div>
+    <section class="principle"><span>THE BOUNDARY</span><p>Not a map. Not an accessibility or safety check. Not sent to an authority.<br><strong>Your observations stay yours to review and decide what to do with.</strong></p><button id="about-button" class="text-button" type="button">How the AI is used ↗</button></section>
+    <footer><span>Footpath Receipt · a field note tool for one familiar block</span><span>Observe carefully. Leave conclusions open.</span></footer>
+  </main>
+  <template id="note-template"><div class="note-row"><span class="note-id"></span><textarea class="note-text" maxlength="600" rows="2" placeholder="Something you personally noticed…" aria-label="Observation note"></textarea><button class="remove-note" type="button" aria-label="Remove observation">×</button></div></template>
+  <dialog id="about-dialog"><button id="close-about" class="dialog-close" aria-label="Close">×</button><p class="eyebrow">A little transparency</p><h2>Notes in, draft out.</h2><p>Footpath Receipt sends your typed notes and optional typed area label to Google’s hosted Gemini API, where the open-weight Gemma 4 model organizes them. The API key stays on the local server, not in browser code.</p><p>Gemma must attach each item to a note ID and an exact quote. The server checks that the quote occurs in the cited note. This verifies provenance, not truth. The model cannot see your block, verify its state, judge safety or accessibility, or contact anyone.</p><button id="close-about-2" class="primary" type="button">Understood</button></dialog>
+</body>
+</html>
